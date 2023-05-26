@@ -1,6 +1,7 @@
 .container {
     margin-left: 5rem;
     margin-right: 5rem;
+
 }
 #titulo {
     color: black;
@@ -12,17 +13,19 @@
 
 #formCompleto {
     
-    margin-left: 20rem;
+    margin-left: 15rem;
     font-weight: bold;
     font-size: 1.5rem;
     width: 50rem;
+
 
 }
 
 #formDentro {
     padding-top: 1rem;
-    padding-left: 10rem;
     background-color: #f9f1f1;
+    border: 2px solid black;
+    text-align: center;
  
 }
 
@@ -50,4 +53,21 @@
 
 #aceptar {
     background-color: #8FA98F;
+}
+
+.divAbajo {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+#nombre {
+    margin-right: 16rem;
+}
+
+#contraseña {
+    margin-right: 22rem;
+}
+
+#error {
+    color:#E75D5D;
 }

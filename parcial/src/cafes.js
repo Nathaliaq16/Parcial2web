@@ -1,82 +1,102 @@
-import React, { useEffect } from "react";
+import React from "react";
 import './tablaCafes.css';
 
+
 export default function Cafes() {
-  useEffect(() => {
-    const tablaCafes = document.getElementById('tablacafes');
-    fetch("http://localhost:3001/cafes", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      },
-    })
-    .then(response => response.json())
-    .then(data => {
-      data.forEach(cafe => {
-        const fila = document.createElement('tr');
+    const [coffees, setCoffees] = React.useState([]);
+    const [cafe, setCoffee] = React.useState(null);
 
-        const columnaId = document.createElement('td');
-        columnaId.textContent = cafe.id;
-        fila.appendChild(columnaId);
-
-        const columnaNombre = document.createElement('td');
-        columnaNombre.textContent = cafe.nombre;
-        fila.appendChild(columnaNombre);
-
-        const columnaTipo = document.createElement('td');
-        columnaTipo.textContent = cafe.tipo;
-        fila.appendChild(columnaTipo);
-
-        const columnaRegion = document.createElement('td');
-        columnaRegion.textContent = cafe.region;
-        fila.appendChild(columnaRegion);
-
-        const columnaNotas = document.createElement('td');
-        columnaNotas.textContent = cafe.notas;
-        fila.appendChild(columnaNotas);
-
-        const columnaFechaCultivo = document.createElement('td');
-        columnaFechaCultivo.textContent = cafe.fecha_cultivo;
-        fila.appendChild(columnaFechaCultivo);
-
-        const columnaAltura = document.createElement('td');
-        columnaAltura.textContent = cafe.altura;
-        fila.appendChild(columnaAltura);
-
-        const columnaImagen = document.createElement('td');
-        const imagen = document.createElement('img');
-        imagen.src = cafe.imagen;
-        imagen.alt = cafe.nombre;
-        imagen.style.width = '100px'; // Ajusta el tamaño de la imagen según tus necesidades
-        columnaImagen.appendChild(imagen);
-        fila.appendChild(columnaImagen);
-
-        tablaCafes.querySelector('tbody').appendChild(fila);
-      });
-    })
-    .catch(error => {
-      console.log('Error:', error);
+    React.useEffect(() => {
+        fetch("http://localhost:3001/cafes", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(data => setCoffees(data));
     });
-  }, []);
 
-  return (
-    <div className="container">
-      <table id="tablacafes">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Tipo</th>
-            <th>Región</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+    const handleCoffeeSelection = (cafe) => {
+        fetch(`http://localhost:3001/cafes/${cafe.id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(data => setCoffee(data))
+    }
 
+    const tableRows = coffees.map((cafe) => {
+
+        return (
+            
+            <tr id="tablaHover"key={cafe.id} onClick={() => handleCoffeeSelection(cafe)}>
+                <th scope="row">{cafe.id}</th>
+                <td>{cafe.nombre}</td>
+                <td>{cafe.tipo}</td>
+                <td>{cafe.region}</td>
+            </tr >
+        );
+    });
+
+    function cafeDescripcion(cafe) {
+        return (
+            <div id="cardCafe">
+                <p id="nombreCafe">{cafe.nombre}</p>
+                <p id="fecha">{cafe.fecha_cultivo}</p>
+                <img id="imagenCafe" src={cafe.imagen} alt="cafe"/>
+                <p id="notas">Notas</p>
+                <p id="textAdicional">{cafe.notas}</p>
+                <p id="alturaCafe">Cultivado a una altura de {cafe.altura} msnm</p>
+            </div>
+        )
+    }
+
+    function makeTable() {
+        return (
+       
+            <div>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr id="miTablaPersonalizada">
+                        <th scope="col" >#</th>
+                        <th scope="col" >Nombre</th>
+                        <th scope="col" >Tipo</th>
+                        <th scope="col" >Region</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    {tableRows}
+                        </tbody>
+
+                </table>
+
+            </div>
+        )
+    }
 
     
 
+    return (
+  
+            <div className="container">
+                <h1 id="titulo">El aroma mágico</h1>
+                <hr class='linea'></hr>
+                <div><img id="imagenInicio" src='images/imagen1.png' alt='Granos de cafes'/></div>
+                <hr class='linea'></hr>
+                <div id="tablaHecha">
+                {makeTable()}
 
-    </div>
+                <div>
+                    {cafe && cafeDescripcion(cafe)}
+                </div>
+                </div>
+                <div className="divAbajo"><p className="abajo">Contact us: +57 3102105253 - info@elaromamagico.com - @elaromamagico</p></div>
+            </div>
+   
+
   );
 }
