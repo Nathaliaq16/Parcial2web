@@ -1,0 +1,14 @@
+.tablaCafes {
+    border-collapse: collapse;
+  }
+  
+  .tablaCafes th,
+  .tablaCafes td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+  
+  .tablaCafes img {
+    max-width: 100px;
+  }
+  
