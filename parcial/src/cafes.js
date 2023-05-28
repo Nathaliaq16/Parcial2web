@@ -1,5 +1,6 @@
 import React from "react";
 import './tablaCafes.css';
+import { FormattedDate, FormattedMessage } from "react-intl";
 
 
 export default function Cafes() {
@@ -45,11 +46,19 @@ export default function Cafes() {
         return (
             <div id="cardCafe">
                 <p id="nombreCafe">{cafe.nombre}</p>
-                <p id="fecha">{cafe.fecha_cultivo}</p>
+                <p id="fecha">{cafe.fecha_cultivo && <FormattedDate
+                    value={new Date(cafe.fecha_cultivo)}
+                    year="numeric"
+                    day="numeric"
+                    month="numeric"
+                    
+                    
+                    />}
+                </p>
                 <img id="imagenCafe" src={cafe.imagen} alt="cafe"/>
-                <p id="notas">Notas</p>
+                <p id="notas"><FormattedMessage id="Notes" /></p>
                 <p id="textAdicional">{cafe.notas}</p>
-                <p id="alturaCafe">Cultivado a una altura de {cafe.altura} msnm</p>
+                <p id="alturaCafe"><FormattedMessage id="Grown at height of" /> {cafe.altura} <FormattedMessage id="masl" /></p>
             </div>
         )
     }
@@ -62,9 +71,9 @@ export default function Cafes() {
                     <thead class="thead-dark">
                         <tr id="miTablaPersonalizada">
                         <th scope="col" >#</th>
-                        <th scope="col" >Nombre</th>
-                        <th scope="col" >Tipo</th>
-                        <th scope="col" >Region</th>
+                        <th scope="col" ><FormattedMessage id="Name" /></th>
+                        <th scope="col" ><FormattedMessage id="Type" /></th>
+                        <th scope="col" ><FormattedMessage id="Region" /></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,7 +92,7 @@ export default function Cafes() {
     return (
   
             <div className="container">
-                <h1 id="titulo">El aroma mágico</h1>
+                <h1 id="titulo"><FormattedMessage id="The magical scent" /></h1>
                 <hr class='linea'></hr>
                 <div><img id="imagenInicio" src='images/imagen1.png' alt='Granos de cafes'/></div>
                 <hr class='linea'></hr>

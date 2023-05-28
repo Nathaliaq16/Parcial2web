@@ -26,7 +26,6 @@
     padding-top: 1rem;
     background-color: #f9f1f1;
     border: 2px solid black;
-    text-align: center;
  
 }
 
@@ -35,6 +34,7 @@
     height: 58px;
     width: 556px;
     border-color: transparent;
+    margin-left: 10rem;
 }
 
 .boton {
@@ -54,6 +54,7 @@
 
 #aceptar {
     background-color: #8FA98F;
+    margin-left: 10rem;
 }
 
 .divAbajo {
@@ -62,13 +63,14 @@
 }
 
 #nombre {
-    margin-right: 21rem;
+    margin-left: 10rem;
 }
 
 #contraseña {
-    margin-right: 26rem;
+    margin-left: 10rem;
 }
 
 #error {
     color:#E75D5D;
+
 }
