@@ -10,5 +10,7 @@
     "Password": "Contraseña",
     "Login": "Inicio de sesión",
     "Submit": "Ingresar",
-    "Cancel": "Cancelar"
+    "Cancel": "Cancelar",
+    "Authentication error": "Error de autenticación. Revise sus credenciales",
+    "Action cancel": "Inicio de sesión cancelado"
 }

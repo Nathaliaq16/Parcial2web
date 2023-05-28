@@ -48,7 +48,7 @@
 }
 
 #cancelar{
-    margin-left: 2rem;
+    margin-left: 3rem;
     background-color: #E75D5D;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .divAbajo {
-    margin-top: 7rem;
+    margin-top: 10rem;
     text-align: center;
 }
 
@@ -72,5 +72,7 @@
 
 #error {
     color:#E75D5D;
+    text-align: center;
+
 
 }

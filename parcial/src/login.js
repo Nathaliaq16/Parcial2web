@@ -26,7 +26,12 @@ export default function Login() {
         })
     
             .then(response => response.json())
-            .then(data => data.status === 'success' ? window.location.href = '/cafes' : setError("Error de autenticación. Revise sus credenciales"))
+            .then(data => data.status === 'success' ? window.location.href = '/cafes' : setError(<FormattedMessage id="Authentication error" />))
+    }
+
+    function handleSubmit2(e) {
+        e.preventDefault();
+        setError(<FormattedMessage id="Action cancel" />)
     }
 
     // return a component for a login form
@@ -52,7 +57,7 @@ export default function Login() {
                         <input className="inputLogin" type="password"  onChange={data => setPassword(data.target.value)} />
                     </div>
                     <button id="aceptar" className="boton" type="submit"onClick={handleSubmit}><FormattedMessage id="Submit" /></button>
-                    <button id="cancelar" className="boton" type="button"><FormattedMessage id="Cancel" /></button>
+                    <button id="cancelar" className="boton" type="submit" onClick={handleSubmit2}><FormattedMessage id="Cancel" /></button>
                     <p id='error'>{errorIngreso}</p>
                 </div>
 

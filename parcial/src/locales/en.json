@@ -10,5 +10,7 @@
     "Password": "Password",
     "Login": "Login",
     "Submit": "Submit",
-    "Cancel": "Cancel"
+    "Cancel": "Cancel",
+    "Authentication error": "Authentication error",
+    "Action cancel": "Session login canceled"
 }
